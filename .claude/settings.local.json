@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git commit:*)",
       "Bash(gh repo create:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
