@@ -1022,8 +1022,8 @@ body {
 .pricing-card.sold-out {
     background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
     color: #666;
-    transform: scale(0.9);
-    opacity: 0.6;
+    transform: scale(0.95);
+    opacity: 0.7;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     filter: grayscale(100%);
@@ -1064,7 +1064,7 @@ body {
 .pricing-card.active-offer {
     background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #5385c1 75%, #4a7bb7 100%);
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 
         0 20px 50px rgba(83, 133, 193, 0.4),
         0 0 30px rgba(255, 107, 53, 0.3);
@@ -1162,7 +1162,7 @@ body {
     background: white;
     color: #666;
     border: 2px solid #e0e0e0;
-    transform: scale(0.95);
+    transform: scale(1.0);
     opacity: 0.8;
 }
 
@@ -1288,12 +1288,12 @@ body {
 
 /* Hover effects for new design system */
 .pricing-card.sold-out:hover {
-    transform: scale(0.9);
+    transform: scale(0.95);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-card.active-offer:hover {
-    transform: scale(1.12);
+    transform: scale(1.07);
     animation: none;
     box-shadow: 
         0 30px 70px rgba(83, 133, 193, 0.5),
@@ -1301,7 +1301,7 @@ body {
 }
 
 .pricing-card.future-option:hover {
-    transform: scale(0.98);
+    transform: scale(1.02);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -1951,15 +1951,15 @@ body {
     }
     
     .pricing-card.sold-out {
-        transform: scale(0.95);
+        transform: scale(0.98);
     }
     
     .pricing-card.active-offer {
-        transform: scale(1.05);
+        transform: scale(1.02);
     }
     
     .pricing-card.future-option {
-        transform: scale(0.98);
+        transform: scale(1.0);
     }
     
     .pricing-amount.highlight {
@@ -2331,16 +2331,16 @@ body {
     }
     
     .pricing-card.sold-out {
-        transform: scale(0.98);
+        transform: scale(1.0);
     }
     
     .pricing-card.active-offer {
-        transform: scale(1.02);
+        transform: scale(1.0);
         animation: none;
     }
     
     .pricing-card.future-option {
-        transform: scale(1);
+        transform: scale(1.0);
     }
     
     .pricing-amount.highlight {
