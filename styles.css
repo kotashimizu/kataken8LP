@@ -87,7 +87,39 @@ body {
 /* Hero Section */
 .hero {
     padding: 120px 0 60px;
-    background: #f8fbff;
+    background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 25%, #d8edfa 50%, #c8e6f7 75%, #b8dff4 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(83, 133, 193, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 123, 183, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(83, 133, 193, 0.04) 0%, transparent 50%);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(83,133,193,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23medical-grid)"/></svg>');
+    opacity: 0.3;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
 }
 
 .hero-banner {
@@ -95,19 +127,57 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #5385c1, transparent);
+    border-radius: 2px;
 }
 
 .banner-image {
     width: 100%;
     max-width: 1000px;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.8s ease;
 }
 
 .banner-image:hover {
-    transform: scale(1.02);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.banner-image:hover::before {
+    left: 100%;
 }
 
 .hero-cta {
@@ -115,6 +185,30 @@ body {
     margin: 40px auto 0;
     padding: 0 20px;
     text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(83, 133, 193, 0.3), transparent);
+}
+
+.hero-cta::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(83, 133, 193, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
 }
 
 /* Buttons */
@@ -130,18 +224,43 @@ body {
 }
 
 .cta-button.primary {
-    background: linear-gradient(135deg, #fff, #f0f8ff);
-    color: #dc143c;
-    padding: 20px 40px;
+    background: linear-gradient(135deg, #5385c1 0%, #4a7bb7 50%, #3e6fa3 100%);
+    color: white;
+    padding: 22px 45px;
     font-size: 1.3rem;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 
+        0 12px 30px rgba(83, 133, 193, 0.4),
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
 }
 
 .cta-button.primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 40px rgba(83, 133, 193, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #5d8dc9 0%, #5284bf 50%, #4679ab 100%);
+}
+
+.cta-button.primary:hover::before {
+    left: 100%;
 }
 
 .cta-button.large {
@@ -150,9 +269,355 @@ body {
 }
 
 .cta-note {
-    margin-top: 15px;
-    font-size: 0.95rem;
-    opacity: 0.8;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #5385c1;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 12px 24px;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(83, 133, 193, 0.2);
+}
+
+/* Introduction Section */
+.introduction {
+    padding: 80px 0;
+    background: linear-gradient(to bottom, rgba(248, 251, 255, 0.8), rgba(255, 255, 255, 0.9));
+    position: relative;
+}
+
+.introduction::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="intro-pattern" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(83,133,193,0.03)"/><path d="M0 25h50M25 0v50" stroke="rgba(83,133,193,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23intro-pattern)"/></svg>');
+    opacity: 0.4;
+}
+
+.intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-headline {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c5aa0;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    position: relative;
+    letter-spacing: -0.5px;
+}
+
+.intro-headline::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #5385c1, transparent);
+    border-radius: 2px;
+}
+
+.intro-description {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.intro-description p {
+    font-size: 1.3rem;
+    color: #333;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0 20px;
+    position: relative;
+}
+
+.intro-description p:first-child {
+    font-weight: 500;
+    color: #4a7bb7;
+}
+
+.intro-description p:last-child {
+    font-size: 1.4rem;
+    color: #2c5aa0;
+    font-weight: 600;
+}
+
+.intro-description strong {
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.1), rgba(74, 123, 183, 0.05));
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(83, 133, 193, 0.2);
+    font-weight: 700;
+    color: #dc143c;
+}
+
+/* Problems Section */
+.problems {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a365d 0%, #2c5aa0 25%, #2d3748 50%, #1a202c 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.problems::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="problems-pattern" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.03)"/><path d="M0 30h60M30 0v60" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23problems-pattern)"/></svg>');
+    opacity: 0.4;
+}
+
+.problems-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 70px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.problems-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 2px;
+}
+
+.problems-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 35px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.problem-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.problem-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.problem-item:hover::before {
+    left: 100%;
+}
+
+.problem-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffd700;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.problem-item:hover .problem-icon {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.problem-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.problem-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffd700;
+    line-height: 1.3;
+}
+
+.problem-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* Target Audience Section */
+.target-audience {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #e8f4fd 100%);
+    position: relative;
+}
+
+.target-audience::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="target-pattern" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1.5" fill="rgba(83,133,193,0.06)"/><path d="M0 20h40M20 0v40" stroke="rgba(83,133,193,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23target-pattern)"/></svg>');
+    opacity: 0.5;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.audience-card {
+    background: white;
+    padding: 45px 35px;
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(83, 133, 193, 0.1);
+    text-align: center;
+    transition: all 0.4s ease;
+    border-top: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.audience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #5385c1, #4a7bb7, #3e6fa3);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.audience-card:hover::before {
+    transform: scaleX(1);
+}
+
+.audience-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(83, 133, 193, 0.2);
+}
+
+.audience-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.1), rgba(74, 123, 183, 0.05));
+    border-radius: 50%;
+    border: 2px solid rgba(83, 133, 193, 0.2);
+    color: #5385c1;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.audience-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.2), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.audience-card:hover .audience-icon {
+    transform: translateY(-8px) scale(1.15);
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.15), rgba(74, 123, 183, 0.08));
+    border-color: rgba(83, 133, 193, 0.4);
+    box-shadow: 0 12px 35px rgba(83, 133, 193, 0.25);
+}
+
+.audience-card:hover .audience-icon::before {
+    opacity: 1;
+}
+
+.audience-icon svg {
+    width: 35px;
+    height: 35px;
+    transition: all 0.4s ease;
+}
+
+.audience-card:hover .audience-icon svg {
+    transform: scale(1.1);
+}
+
+.audience-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.audience-card p {
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* Benefits Section */
@@ -183,22 +648,28 @@ body {
 }
 
 .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     margin-top: 80px;
 }
 
 .benefit-card {
     background: white;
-    padding: 40px 30px;
+    padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    text-align: center;
     transition: all 0.3s ease;
     border: 1px solid rgba(83, 133, 193, 0.1);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.benefit-card:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
 .benefit-card::before {
@@ -218,28 +689,79 @@ body {
 }
 
 .benefit-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
 .benefit-icon {
-    font-size: 3rem;
-    margin-bottom: 25px;
-    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.1), rgba(74, 123, 183, 0.05));
+    border-radius: 50%;
+    border: 2px solid rgba(83, 133, 193, 0.2);
+    color: #5385c1;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.benefit-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.2), transparent);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: translateY(-5px) scale(1.1);
+    background: linear-gradient(135deg, rgba(83, 133, 193, 0.15), rgba(74, 123, 183, 0.08));
+    border-color: rgba(83, 133, 193, 0.4);
+    box-shadow: 0 8px 25px rgba(83, 133, 193, 0.2);
+}
+
+.benefit-card:hover .benefit-icon::before {
+    opacity: 1;
+}
+
+.benefit-icon svg {
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon svg {
+    transform: scale(1.1);
+}
+
+.benefit-content {
+    flex: 1;
+    text-align: left;
 }
 
 .benefit-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #333;
-    margin-bottom: 20px;
-    line-height: 1.4;
+    margin-bottom: 15px;
+    line-height: 1.3;
 }
 
 .benefit-card p {
     color: #666;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
 /* Curriculum Section */
@@ -322,6 +844,138 @@ body {
 .curriculum-note p {
     color: #5385c1;
     font-weight: 600;
+    margin: 0;
+}
+
+/* Future Vision Section */
+.future-vision {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 25%, #d8edfa 50%, #c8e6f7 75%, #b8dff4 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.future-vision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(83, 133, 193, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(74, 123, 183, 0.08) 0%, transparent 50%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="vision-pattern" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1" fill="rgba(83,133,193,0.04)"/><path d="M0 15h30M15 0v30" stroke="rgba(83,133,193,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23vision-pattern)"/></svg>');
+    opacity: 0.6;
+}
+
+.timeline-container {
+    position: relative;
+    z-index: 2;
+}
+
+.vision-timeline {
+    max-width: 1000px;
+    margin: 80px auto 0;
+    position: relative;
+}
+
+.vision-timeline::before {
+    content: '';
+    position: absolute;
+    left: 150px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #5385c1, #4a7bb7, #3e6fa3);
+    border-radius: 2px;
+}
+
+.vision-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.vision-item:last-child {
+    margin-bottom: 0;
+}
+
+.vision-period {
+    width: 120px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #5385c1;
+    background: white;
+    padding: 15px 10px;
+    border-radius: 50px;
+    border: 3px solid #5385c1;
+    box-shadow: 0 8px 25px rgba(83, 133, 193, 0.2);
+    position: relative;
+    z-index: 3;
+    margin-right: 60px;
+}
+
+.vision-period::after {
+    content: '';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background: #5385c1;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px white, 0 0 0 8px #5385c1;
+}
+
+.vision-content {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(83, 133, 193, 0.1);
+    border-left: 5px solid #5385c1;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.vision-content::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid white;
+}
+
+.vision-item:hover .vision-content {
+    transform: translateX(10px);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(83, 133, 193, 0.2);
+}
+
+.vision-content h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2c5aa0;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.vision-content p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.7;
     margin: 0;
 }
 
@@ -504,7 +1158,7 @@ body {
 /* Final CTA Section */
 .final-cta {
     padding: 100px 0;
-    background: linear-gradient(135deg, #dc143c 0%, #b91c3c 50%, #8b1538 100%);
+    background: linear-gradient(135deg, #2c5aa0 0%, #5385c1 25%, #4a7bb7 50%, #3e6fa3 75%, #2c5aa0 100%);
     color: white;
     text-align: center;
     position: relative;
@@ -518,8 +1172,11 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain2" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain2)"/></svg>');
-    opacity: 0.2;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="professional-grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/><circle cx="12.5" cy="12.5" r="0.5" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="100" fill="url(%23professional-grid)"/></svg>');
+    opacity: 0.3;
 }
 
 .cta-content {
@@ -531,16 +1188,32 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 25px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.cta-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 2px;
 }
 
 .cta-content p {
     font-size: 1.2rem;
     margin-bottom: 40px;
-    opacity: 0.9;
+    opacity: 0.95;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .cta-urgency {
@@ -553,17 +1226,35 @@ body {
 }
 
 #countdown {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 15px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    padding: 6px 18px;
+    border-radius: 25px;
     font-weight: 700;
-    animation: blink 1s ease-in-out infinite alternate;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    100% { opacity: 0.7; }
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    50% { 
+        opacity: 0.9; 
+        transform: scale(1.05);
+        box-shadow: 
+            0 6px 20px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
 }
+
+/* Remove old blink animation */
 
 /* Footer */
 .footer {
@@ -615,14 +1306,365 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 100px 0 50px;
+    }
+    
+    .hero::after {
+        opacity: 0.2;
+    }
+    
+    .banner-image {
+        max-width: 900px;
+        border-radius: 18px;
+    }
+    
+    .cta-button.primary {
+        padding: 20px 38px;
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .audience-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 35px;
+    }
+    
+    .audience-card {
+        padding: 40px 30px;
+    }
+    
+    .audience-icon {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 25px;
+    }
+    
+    .audience-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .problems {
+        padding: 80px 0;
+    }
+    
+    .problems-title {
+        font-size: 2.2rem;
+        margin-bottom: 60px;
+    }
+    
+    .problems-list {
+        gap: 35px;
+    }
+    
+    .problem-item {
+        padding: 30px;
+        gap: 25px;
+    }
+    
+    .problem-icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .problem-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .problem-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .problem-content p {
+        font-size: 1rem;
+    }
+    
+    .benefits-grid {
+        gap: 40px;
+    }
+    
+    .benefit-card {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .benefit-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .benefit-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .benefit-content {
+        text-align: center;
+    }
+    
+    .future-vision {
+        padding: 100px 0;
+    }
+    
+    .vision-timeline::before {
+        left: 60px;
+    }
+    
+    .vision-period {
+        width: 100px;
+        font-size: 1.1rem;
+        padding: 12px 8px;
+        margin-right: 40px;
+    }
+    
+    .vision-content {
+        padding: 35px;
+    }
+    
+    .vision-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .vision-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .intro-headline {
+        font-size: 2rem;
+    }
+    
+    .intro-description p {
+        font-size: 1.2rem;
+    }
+    
+    .intro-description p:last-child {
+        font-size: 1.3rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .introduction {
+        padding: 60px 0;
+    }
+    
+    .intro-headline {
+        font-size: 1.7rem;
+        margin-bottom: 30px;
+    }
+    
+    .intro-headline::after {
+        width: 100px;
+        height: 2px;
+        bottom: -15px;
+    }
+    
+    .intro-description {
+        gap: 20px;
+    }
+    
+    .intro-description p {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+    
+    .intro-description p:last-child {
+        font-size: 1.2rem;
+    }
+    
+    .target-audience {
+        padding: 80px 0;
+    }
+    
+    .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 60px;
+    }
+    
+    .audience-card {
+        padding: 35px 25px;
+    }
+    
+    .audience-card:hover {
+        transform: translateY(-8px);
+    }
+    
+    .audience-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 25px;
+    }
+    
+    .audience-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .audience-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+    }
+    
+    .audience-card p {
+        font-size: 1rem;
+    }
+    
+    .problems {
+        padding: 60px 0;
+    }
+    
+    .problems-title {
+        font-size: 1.8rem;
+        margin-bottom: 50px;
+    }
+    
+    .problems-list {
+        gap: 30px;
+    }
+    
+    .problem-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    .problem-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .problem-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    
+    .problem-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .problem-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .problem-content p {
+        font-size: 0.95rem;
+    }
+    
+    .benefits-grid {
+        gap: 35px;
+    }
+    
+    .benefit-card {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 35px 25px;
+        gap: 25px;
+    }
+    
+    .benefit-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .benefit-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .benefit-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    
+    .benefit-content p {
+        font-size: 1rem;
+    }
+    
+    .future-vision {
+        padding: 80px 0;
+    }
+    
+    .vision-timeline::before {
+        display: none;
+    }
+    
+    .vision-item {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .vision-period {
+        width: 120px;
+        margin: 0 auto 25px;
+    }
+    
+    .vision-period::after {
+        display: none;
+    }
+    
+    .vision-content {
+        padding: 30px;
+    }
+    
+    .vision-content::before {
+        display: none;
+    }
+    
+    .vision-item:hover .vision-content {
+        transform: translateY(-5px);
+    }
+    
     .nav-menu {
         display: none;
     }
     
+    .hero {
+        padding: 90px 0 40px;
+    }
+    
+    .hero::after {
+        opacity: 0.15;
+    }
+    
+    .hero-banner::before {
+        width: 80px;
+        height: 3px;
+        top: -15px;
+    }
+    
     .banner-image {
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 
+            0 15px 30px rgba(0, 0, 0, 0.12),
+            0 0 0 1px rgba(255, 255, 255, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    
+    .banner-image:hover {
+        transform: translateY(-6px) scale(1.01);
+    }
+    
+    .cta-button.primary {
+        padding: 18px 35px;
+        font-size: 1.1rem;
+    }
+    
+    .cta-note {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
     
     .benefits-grid {
@@ -630,21 +1672,38 @@ body {
         gap: 30px;
     }
     
+    .benefit-card {
+        padding: 35px 25px;
+    }
+    
     .timeline-item {
         flex-direction: column;
         text-align: center;
+        margin-bottom: 40px;
     }
     
     .timeline-marker {
         margin: 0 auto 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
     }
     
     .curriculum-timeline::before {
         display: none;
     }
     
+    .timeline-content {
+        padding: 25px;
+    }
+    
     .pricing-table {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .pricing-card.early-bird {
+        transform: scale(1.02);
     }
     
     .pricing-features {
@@ -666,50 +1725,362 @@ body {
 }
 
 @media (max-width: 480px) {
+    .introduction {
+        padding: 50px 0;
+    }
+    
+    .intro-headline {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        line-height: 1.3;
+    }
+    
+    .intro-headline::after {
+        width: 80px;
+        height: 2px;
+        bottom: -12px;
+    }
+    
+    .intro-description {
+        gap: 18px;
+    }
+    
+    .intro-description p {
+        font-size: 1rem;
+        padding: 0 5px;
+    }
+    
+    .intro-description p:last-child {
+        font-size: 1.1rem;
+    }
+    
+    .intro-description strong {
+        padding: 1px 6px;
+        font-size: 0.95rem;
+    }
+    
+    .problems {
+        padding: 50px 0;
+    }
+    
+    .problems-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        line-height: 1.3;
+    }
+    
+    .problems-title::after {
+        width: 80px;
+        height: 2px;
+        bottom: -15px;
+    }
+    
+    .problems-list {
+        gap: 25px;
+    }
+    
+    .problem-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+        border-radius: 12px;
+    }
+    
+    .problem-item:hover {
+        transform: translateY(-3px);
+    }
+    
+    .problem-icon {
+        width: 45px;
+        height: 45px;
+        margin: 0 auto;
+    }
+    
+    .problem-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .problem-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+    
+    .problem-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .benefits-grid {
+        gap: 30px;
+    }
+    
+    .benefit-card {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 20px;
+        border-radius: 15px;
+    }
+    
+    .benefit-icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .benefit-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .benefit-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+    
+    .benefit-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .future-vision {
+        padding: 60px 0;
+    }
+    
+    .vision-timeline {
+        margin-top: 50px;
+    }
+    
+    .vision-item {
+        margin-bottom: 40px;
+    }
+    
+    .vision-period {
+        width: 100px;
+        font-size: 1rem;
+        padding: 10px 8px;
+        margin-bottom: 20px;
+    }
+    
+    .vision-content {
+        padding: 25px;
+        border-radius: 15px;
+    }
+    
+    .vision-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    
+    .vision-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .target-audience {
+        padding: 60px 0;
+    }
+    
+    .audience-grid {
+        margin-top: 50px;
+        gap: 25px;
+    }
+    
+    .audience-card {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .audience-card:hover {
+        transform: translateY(-6px);
+    }
+    
+    .audience-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 20px;
+    }
+    
+    .audience-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .audience-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        line-height: 1.3;
+    }
+    
+    .audience-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
     .container {
         padding: 0 15px;
     }
     
+    .nav-logo h1 {
+        font-size: 1.3rem;
+    }
+    
     .hero {
-        padding: 100px 0 40px;
+        padding: 80px 0 35px;
+    }
+    
+    .hero::after {
+        opacity: 0.1;
     }
     
     .hero-banner {
         padding: 0 15px;
     }
     
+    .hero-banner::before {
+        width: 60px;
+        height: 2px;
+        top: -12px;
+    }
+    
     .banner-image {
-        border-radius: 8px;
+        border-radius: 12px;
+        box-shadow: 
+            0 12px 25px rgba(0, 0, 0, 0.1),
+            0 0 0 1px rgba(255, 255, 255, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+    
+    .banner-image:hover {
+        transform: translateY(-4px) scale(1.005);
+    }
+    
+    .hero-cta::before,
+    .hero-cta::after {
+        display: none;
     }
     
     .cta-button.primary {
-        padding: 15px 30px;
-        font-size: 1.1rem;
+        padding: 16px 32px;
+        font-size: 1.05rem;
+        letter-spacing: 0.3px;
     }
     
     .cta-button.large {
-        padding: 20px 35px;
-        font-size: 1.3rem;
+        padding: 18px 36px;
+        font-size: 1.2rem;
+    }
+    
+    .cta-note {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        margin-top: 15px;
     }
     
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 50px;
+    }
+    
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+        bottom: -12px;
     }
     
     .benefit-card {
         padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+    
+    .benefit-icon svg {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .benefit-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .timeline-marker {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+        margin-bottom: 15px;
     }
     
     .timeline-content {
         padding: 20px;
+        border-radius: 12px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
     }
     
     .pricing-card {
         padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .pricing-amount {
+        font-size: 2.5rem;
+    }
+    
+    .pricing-features {
+        gap: 15px;
+    }
+    
+    .feature-item {
+        font-size: 1rem;
+    }
+    
+    .faq-question {
+        padding: 20px 25px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer p {
+        padding: 0 25px 20px;
     }
     
     .cta-content h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .cta-content p {
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+    }
+    
+    .urgency-text {
+        font-size: 1rem;
+    }
+    
+    #countdown {
+        padding: 4px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-links {
+        gap: 15px 25px;
     }
 }
 
