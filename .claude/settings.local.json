@@ -5,7 +5,8 @@
       "Bash(gh repo create:*)",
       "Bash(gh api:*)",
       "Bash(git push:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "mcp__serena__get_symbols_overview"
     ],
     "deny": []
   }
